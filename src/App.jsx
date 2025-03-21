@@ -1,9 +1,21 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Search from "./components/Search";
 import GameCard from "./components/GameCard";
 
 function App() {
   const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    const getGames = async () => {
+      const response = await fetch(
+        `http://localhost:3000/api/games?search="mario"`
+      );
+
+      const data = await response.json();
+      console.log(data);
+    };
+    getGames();
+  }, []);
 
   return (
     <main className="w-full p-2 flex flex-col items-center">
