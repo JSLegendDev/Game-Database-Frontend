@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export default function Search() {
+export default function Search({ query, onChange }) {
   const [searchQuery, setSearchQuery] = useState("");
   return (
     <div className="w-full max-w-3xl mb-4">
@@ -14,8 +14,8 @@ export default function Search() {
           className="w-full focus:outline-none ml-2 text-gray-300"
           type="text"
           placeholder="Search a game"
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
+          value={query}
+          onChange={onChange}
         />
       </div>
       <h1 className="text-amber-50">{searchQuery}</h1>
