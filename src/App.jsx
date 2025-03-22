@@ -28,14 +28,15 @@ function App() {
         query={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
       />
-      <div className="w-full max-w-3xl grid grid-cols-2 gap-5 xs:grid-cols-2 md:grid-cols-3">
+      <div className="w-full max-w-3xl grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {data ? (
           data.results.map((game) =>
-            game.added > 100 ? (
+            game.added > 100 && game.playtime > 0 && game.metacritic ? (
               <GameCard
                 name={game.name}
                 coverLink={game.background_image}
-                playtime={game.playtime || 0}
+                playtime={game.playtime}
+                genres={game.genres}
               />
             ) : null
           )

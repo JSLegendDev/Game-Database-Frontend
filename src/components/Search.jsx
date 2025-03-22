@@ -7,7 +7,7 @@ export default function Search({ query, onChange }) {
       <div className="flex my-2 rounded-md shadow-xl bg-gray-800 p-4">
         <img
           className="relative top-0.5 h-5 w-5"
-          src="search.svg"
+          src="./search.svg"
           alt="search"
         />
         <input
