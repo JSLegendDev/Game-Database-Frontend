@@ -7,7 +7,11 @@ export default function GameCard({
 }) {
   return (
     <div className="bg-gray-800 rounded-md" onClick={onClick}>
-      <img src={coverLink} className="w-full h-40 object-cover rounded-t-md" />
+      <img
+        src={coverLink}
+        loading="lazy"
+        className="w-full h-40 object-cover rounded-t-md"
+      />
 
       <h1 className="p-2 text-gray-300 text-lg">{name}</h1>
       {playtime !== 0 && (

@@ -3,6 +3,8 @@ import Search from "./components/Search";
 import GameCard from "./components/GameCard";
 import useFetch from "./hooks/useFetch";
 import { fetchGames } from "./api";
+import Spinner from "./components/Spinner";
+import GameDetails from "./components/GameDetails";
 
 function App() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -16,6 +18,8 @@ function App() {
   useEffect(() => {
     const timeoutId = setTimeout(async () => {
       if (searchQuery.trim()) {
+        setShowGameDetails(false);
+        setCurrentGame(null);
         await fetchData();
         return;
       }
@@ -30,32 +34,39 @@ function App() {
         query={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
       />
-      {!showGameDetails ? (
+      {!loading && !showGameDetails ? (
         <div className="w-full max-w-3xl grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {data ? (
-            data.results.map((game) =>
-              game.added > 100 ? (
-                <GameCard
-                  name={game.name}
-                  coverLink={game.background_image}
-                  playtime={game.playtime}
-                  genres={game.genres}
-                  onClick={() => {
-                    setCurrentGame(game);
-                    setShowGameDetails(true);
-                  }}
-                />
-              ) : null
+            data.results.map(
+              (game) =>
+                game.added > 100 && (
+                  <GameCard
+                    key={game.slug}
+                    name={game.name}
+                    coverLink={game.background_image}
+                    playtime={game.playtime}
+                    genres={game.genres}
+                    onClick={() => {
+                      setCurrentGame(game);
+                      setShowGameDetails(true);
+                    }}
+                  />
+                )
             )
           ) : (
             <p className="text-white">Search a game!</p>
           )}
         </div>
+      ) : showGameDetails ? (
+        <GameDetails
+          currentGame={currentGame}
+          goBack={() => {
+            setShowGameDetails(false);
+            setCurrentGame(null);
+          }}
+        />
       ) : (
-        <div>
-          <h1 className="text-white">{currentGame.name}</h1>
-          <img src={currentGame.background_image} />
-        </div>
+        <Spinner />
       )}
     </main>
   );
