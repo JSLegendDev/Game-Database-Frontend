@@ -6,6 +6,8 @@ import { fetchGames } from "./api";
 
 function App() {
   const [searchQuery, setSearchQuery] = useState("");
+  const [showGameDetails, setShowGameDetails] = useState(false);
+  const [currentGame, setCurrentGame] = useState(null);
 
   const { data, loading, fetchData, error, reset } = useFetch(() =>
     fetchGames({ query: searchQuery })
@@ -28,22 +30,33 @@ function App() {
         query={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
       />
-      <div className="w-full max-w-3xl grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {data ? (
-          data.results.map((game) =>
-            game.added > 100 && game.playtime > 0 && game.metacritic ? (
-              <GameCard
-                name={game.name}
-                coverLink={game.background_image}
-                playtime={game.playtime}
-                genres={game.genres}
-              />
-            ) : null
-          )
-        ) : (
-          <p className="text-white">Search a game!</p>
-        )}
-      </div>
+      {!showGameDetails ? (
+        <div className="w-full max-w-3xl grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {data ? (
+            data.results.map((game) =>
+              game.added > 100 ? (
+                <GameCard
+                  name={game.name}
+                  coverLink={game.background_image}
+                  playtime={game.playtime}
+                  genres={game.genres}
+                  onClick={() => {
+                    setCurrentGame(game);
+                    setShowGameDetails(true);
+                  }}
+                />
+              ) : null
+            )
+          ) : (
+            <p className="text-white">Search a game!</p>
+          )}
+        </div>
+      ) : (
+        <div>
+          <h1 className="text-white">{currentGame.name}</h1>
+          <img src={currentGame.background_image} />
+        </div>
+      )}
     </main>
   );
 }
