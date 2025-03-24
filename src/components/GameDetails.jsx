@@ -23,9 +23,17 @@ export default function GameDetails({ currentGame, goBack }) {
       >
         Go Back
       </button>
-      <div>
-        <h1 className="text-white">{currentGame.name}</h1>
-        <img src={currentGame.background_image} />
+      <div className="mt-4">
+        <div className="w-full relative">
+          <div class="absolute inset-0 bg-gradient-to-b from-black via-transparent to-transparent opacity-80"></div>
+          <h1 className="text-white text-2xl absolute top-5 left-5">
+            {currentGame.name}
+          </h1>
+          <img
+            className="w-full h-40 object-cover rounded-md"
+            src={currentGame.background_image}
+          />
+        </div>
         <div>
           {data && <p className="text-white">{data.description_raw}</p>}
           {currentGame.genres.map((genre) => (
@@ -33,11 +41,18 @@ export default function GameDetails({ currentGame, goBack }) {
               {genre.name}
             </span>
           ))}
-          {currentGame.short_screenshots.map((screenshot) =>
-            screenshot.id !== -1 ? (
-              <img key={screenshot.id} src={screenshot.image} loading="lazy" />
-            ) : null
-          )}
+          <div className="w-full flex flex-col justify-center p-4">
+            {currentGame.short_screenshots.map((screenshot) =>
+              screenshot.id !== -1 ? (
+                <img
+                  key={screenshot.id}
+                  src={screenshot.image}
+                  loading="lazy"
+                />
+              ) : null
+            )}
+          </div>
+
           {currentGame.platforms.map((platform) => (
             <span key={platform.platform.name} className="text-white">
               {platform.platform.name}
