@@ -1,8 +1,12 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import useFetch from "../hooks/useFetch";
 import { fetchGameData } from "../api";
 
 export default function GameDetails({ currentGame, goBack }) {
+  const [currentScreenshot, setCurrentScreenshot] = useState(
+    currentGame.short_screenshots[1] || null
+  );
+
   const { data, loading, fetchData, error, reset } = useFetch(() =>
     fetchGameData({ gameSlug: currentGame.slug })
   );
@@ -42,15 +46,30 @@ export default function GameDetails({ currentGame, goBack }) {
             </span>
           ))}
           <div className="w-full flex flex-col justify-center p-4">
-            {currentGame.short_screenshots.map((screenshot) =>
+            <div
+              className="w-full max-w-3xl h-full max-h-96 overflow-hidden border-4 border-red-400 outline rounded-md"
+              key={currentScreenshot.id}
+            >
+              <img
+                className="object-cover w-full h-full"
+                src={currentScreenshot.image}
+                loading="lazy"
+              />
+            </div>
+            {/* {currentGame.short_screenshots.map((screenshot) =>
               screenshot.id !== -1 ? (
-                <img
+                <div
+                  className="w-full h-8/12 overflow-hidden p-12"
                   key={screenshot.id}
-                  src={screenshot.image}
-                  loading="lazy"
-                />
+                >
+                  <img
+                    className="object-cover w-full h-full"
+                    src={screenshot.image}
+                    loading="lazy"
+                  />
+                </div>
               ) : null
-            )}
+            )} */}
           </div>
 
           {currentGame.platforms.map((platform) => (
