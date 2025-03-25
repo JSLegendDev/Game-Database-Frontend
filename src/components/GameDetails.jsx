@@ -38,14 +38,14 @@ export default function GameDetails({ currentGame, goBack }) {
             src={currentGame.background_image}
           />
         </div>
-        <div>
+        <div className="">
           {data && <p className="text-white">{data.description_raw}</p>}
           {currentGame.genres.map((genre) => (
             <span className="text-white" key={genre.name}>
               {genre.name}
             </span>
           ))}
-          <div className="w-full flex flex-col justify-center p-4">
+          <div className="w-full flex flex-col items-center p-4">
             <div
               className="w-full max-w-3xl h-full max-h-96 overflow-hidden border-4 border-red-400 outline rounded-md"
               key={currentScreenshot.id}

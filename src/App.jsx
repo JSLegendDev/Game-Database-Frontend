@@ -58,13 +58,15 @@ function App() {
           )}
         </div>
       ) : showGameDetails ? (
-        <GameDetails
-          currentGame={currentGame}
-          goBack={() => {
-            setShowGameDetails(false);
-            setCurrentGame(null);
-          }}
-        />
+        <div className="w-full max-w-3xl">
+          <GameDetails
+            currentGame={currentGame}
+            goBack={() => {
+              setShowGameDetails(false);
+              setCurrentGame(null);
+            }}
+          />
+        </div>
       ) : (
         <Spinner />
       )}
