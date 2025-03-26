@@ -6,6 +6,7 @@ export default function GameDetails({ currentGame, goBack }) {
   const [currentScreenshot, setCurrentScreenshot] = useState(
     currentGame.short_screenshots[1] || null
   );
+  const [description, setDescription] = useState([]);
 
   const { data, loading, fetchData, error, reset } = useFetch(() =>
     fetchGameData({ gameSlug: currentGame.slug })
@@ -17,6 +18,15 @@ export default function GameDetails({ currentGame, goBack }) {
       await fetchData();
     })();
   }, []);
+
+  useEffect(() => {
+    if (data) {
+      const rawDescription = data.description_raw;
+      const paragraphs = rawDescription.split("\n\n");
+
+      setDescription(paragraphs);
+    }
+  }, [data]);
 
   return (
     <div>
@@ -39,9 +49,15 @@ export default function GameDetails({ currentGame, goBack }) {
           />
         </div>
         <div className="">
-          {data && <p className="text-white">{data.description_raw}</p>}
+          {data && (
+            <div className="text-gray-300">
+              {description.map((paragraph) => (
+                <p className="mt-2">{paragraph}</p>
+              ))}
+            </div>
+          )}
           {currentGame.genres.map((genre) => (
-            <span className="text-white" key={genre.name}>
+            <span className="text-gray-300" key={genre.name}>
               {genre.name}
             </span>
           ))}
@@ -56,24 +72,10 @@ export default function GameDetails({ currentGame, goBack }) {
                 loading="lazy"
               />
             </div>
-            {/* {currentGame.short_screenshots.map((screenshot) =>
-              screenshot.id !== -1 ? (
-                <div
-                  className="w-full h-8/12 overflow-hidden p-12"
-                  key={screenshot.id}
-                >
-                  <img
-                    className="object-cover w-full h-full"
-                    src={screenshot.image}
-                    loading="lazy"
-                  />
-                </div>
-              ) : null
-            )} */}
           </div>
 
           {currentGame.platforms.map((platform) => (
-            <span key={platform.platform.name} className="text-white">
+            <span key={platform.platform.name} className="text-gray-300">
               {platform.platform.name}
             </span>
           ))}
