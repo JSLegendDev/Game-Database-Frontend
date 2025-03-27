@@ -39,7 +39,7 @@ function App() {
           {data ? (
             data.results.map(
               (game) =>
-                game.added > 100 && (
+                game.added > 30 && (
                   <GameCard
                     key={game.slug}
                     name={game.name}

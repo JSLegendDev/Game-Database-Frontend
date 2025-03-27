@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import useFetch from "../hooks/useFetch";
 import { fetchGameData } from "../api";
+import ScreenshotCarousel from "./ScreenshotCarousel";
 
 export default function GameDetails({ currentGame, goBack }) {
-  const [currentScreenshot, setCurrentScreenshot] = useState(
-    currentGame.short_screenshots[1] || null
-  );
+  // const [currentScreenshot, setCurrentScreenshot] = useState(
+  //   currentGame.short_screenshots[1] || null
+  // );
   const [description, setDescription] = useState([]);
 
   const { data, loading, fetchData, error, reset } = useFetch(() =>
@@ -61,8 +62,8 @@ export default function GameDetails({ currentGame, goBack }) {
               {genre.name}
             </span>
           ))}
-          <div className="w-full flex flex-col items-center p-4">
-            <div
+          <div className="w-full flex flex-col items-center p-4 h-96">
+            {/* <div
               className="w-full max-w-3xl h-full max-h-96 overflow-hidden border-4 border-red-400 outline rounded-md"
               key={currentScreenshot.id}
             >
@@ -71,7 +72,12 @@ export default function GameDetails({ currentGame, goBack }) {
                 src={currentScreenshot.image}
                 loading="lazy"
               />
-            </div>
+            </div> */}
+            {currentGame.short_screenshots.length !== 0 && (
+              <ScreenshotCarousel
+                screenshots={currentGame.short_screenshots.slice(0)} // exclude the first screenshot since it's the same as the cover
+              />
+            )}
           </div>
 
           {currentGame.platforms.map((platform) => (
