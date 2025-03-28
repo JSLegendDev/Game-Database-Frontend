@@ -4,6 +4,6 @@
   @apply bg-red-800 rounded-full px-2 text-gray-300 text-sm;
 }
 
-@utility text-gradient {
+.text-gradient {
   @apply bg-linear-to-r from-[#d92b70] to-[#8bd8ff] bg-clip-text text-transparent;
 }
