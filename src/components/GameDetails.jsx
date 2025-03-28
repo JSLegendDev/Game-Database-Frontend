@@ -82,7 +82,7 @@ export default function GameDetails({ currentGame, goBack }) {
               </div>
             )}
             {currentGame.genres.map((genre) => (
-              <span className="text-gray-300" key={genre.name}>
+              <span className="genre-pill" key={genre.name}>
                 {genre.name}
               </span>
             ))}
