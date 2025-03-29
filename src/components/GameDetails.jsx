@@ -50,11 +50,7 @@ export default function GameDetails({ currentGame, goBack }) {
 
   return (
     <div>
-      <button
-        className="bg-blue-400 rounded-md p-2
-      "
-        onClick={goBack}
-      >
+      <button className="main-button" onClick={goBack}>
         Go Back
       </button>
       {loading ? (
@@ -65,7 +61,7 @@ export default function GameDetails({ currentGame, goBack }) {
         <div className="mt-4">
           <div className="w-full relative">
             <div class="absolute inset-0 bg-gradient-to-b from-black via-transparent to-transparent opacity-80"></div>
-            <h1 className="text-white text-2xl absolute top-5 left-5">
+            <h1 className="text-gray-200 text-2xl absolute top-5 left-5">
               {currentGame.name}
             </h1>
             <img
@@ -81,22 +77,8 @@ export default function GameDetails({ currentGame, goBack }) {
                 ))}
               </div>
             )}
-            {currentGame.genres.map((genre) => (
-              <span className="genre-pill" key={genre.name}>
-                {genre.name}
-              </span>
-            ))}
+
             <div className="w-full flex flex-col items-center p-4 h-96">
-              {/* <div
-              className="w-full max-w-3xl h-full max-h-96 overflow-hidden border-4 border-red-400 outline rounded-md"
-              key={currentScreenshot.id}
-            >
-              <img
-                className="object-cover w-full h-full"
-                src={currentScreenshot.image}
-                loading="lazy"
-              />
-            </div> */}
               {currentGame.short_screenshots.length !== 0 && (
                 <ScreenshotCarousel
                   screenshots={currentGame.short_screenshots.slice(0)} // exclude the first screenshot since it's the same as the cover
@@ -104,11 +86,32 @@ export default function GameDetails({ currentGame, goBack }) {
               )}
             </div>
 
-            {currentGame.platforms.map((platform) => (
-              <span key={platform.platform.name} className="text-gray-300">
-                {platform.platform.name}
-              </span>
-            ))}
+            <div className="grid grid-cols-2 py-4">
+              <div className="flex flex-col">
+                <h2 className="text-gray-200 text-xl">Genres</h2>
+                <div className="flex flex-wrap gap-2 py-2">
+                  {currentGame.genres.map((genre) => (
+                    <span className="genre-pill" key={genre.name}>
+                      {genre.name}
+                    </span>
+                  ))}
+                </div>
+                <h2 className="text-gray-200 text-xl">Platforms</h2>
+                <div className="flex flex-wrap gap-2 py-2">
+                  {currentGame.platforms.map((platform) => (
+                    <span
+                      key={platform.platform.name}
+                      className="platform-pill"
+                    >
+                      {platform.platform.name}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              <div className="flex justify-center items-center">
+                <button className="main-button">Purchase</button>
+              </div>
+            </div>
           </div>
         </div>
       )}

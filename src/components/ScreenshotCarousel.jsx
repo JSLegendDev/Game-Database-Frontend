@@ -5,11 +5,11 @@ export default function ScreenshotCarousel({ screenshots }) {
 
   return (
     <div
-      className="w-full max-w-3xl h-full max-h-96 overflow-hidden border-4 border-red-400 outline rounded-md relative"
+      className="bg-gray-800 rounded-lg w-full max-w-3xl h-full max-h-96 overflow-hidden relative"
       key={screenshots[currentScreenshotIndex].id}
     >
       <button
-        className="bg-blue-400 rounded-md px-4 py-2 absolute top-40 right-5 shadow-lg"
+        className="bg-gray-200 rounded-full px-4 py-2 absolute top-40 right-5 shadow-lg"
         onClick={() => {
           setCurrentScreenshotIndex((currentScreenshotIndex) => {
             if (currentScreenshotIndex < screenshots.length - 1) {
@@ -23,7 +23,7 @@ export default function ScreenshotCarousel({ screenshots }) {
         {">"}
       </button>
       <button
-        className="bg-blue-400 rounded-md px-4 py-2 absolute top-40 left-5 shadow-lg"
+        className="bg-gray-200 rounded-full px-4 py-2 absolute top-40 left-5 shadow-lg"
         onClick={() => {
           setCurrentScreenshotIndex((currentScreenshotIndex) => {
             if (currentScreenshotIndex > 0) {
