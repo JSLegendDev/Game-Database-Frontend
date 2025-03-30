@@ -1,7 +1,15 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function ScreenshotCarousel({ screenshots }) {
   const [currentScreenshotIndex, setCurrentScreenshotIndex] = useState(0);
+
+  useEffect(() => {
+    // trick to preload the images
+    for (const screenshot of screenshots) {
+      const img = new Image();
+      img.src = screenshot.image;
+    }
+  }, []);
 
   return (
     <div
