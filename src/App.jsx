@@ -30,13 +30,16 @@ function App() {
 
   return (
     <main className="w-full p-2 flex flex-col items-center">
-      <h1 className="text-gradient text-2xl font-bold m-4">Game Search App</h1>
+      <div className="flex items-center gap-1">
+        <h1 className="text-gradient text-4xl font-bold">Game Database</h1>
+        <img src="./logo.png" className="w-25 h-25" />
+      </div>
       <Search
         query={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
       />
       {!loading && !showGameDetails ? (
-        <div className="w-full max-w-3xl grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="w-full max-w-4xl grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {data ? (
             data.results.map(
               (game) =>
@@ -59,7 +62,7 @@ function App() {
           )}
         </div>
       ) : showGameDetails ? (
-        <div className="w-full max-w-3xl">
+        <div className="w-full max-w-4xl">
           <GameDetails
             currentGame={currentGame}
             goBack={() => {
