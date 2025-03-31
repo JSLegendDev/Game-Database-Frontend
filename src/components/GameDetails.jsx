@@ -50,9 +50,10 @@ export default function GameDetails({ currentGame, goBack }) {
 
   return (
     <div>
-      <button className="main-button" onClick={goBack}>
-        Go Back
+      <button className="main-button flex" onClick={goBack}>
+        <img src="./back-arrow.svg" /> <span className="mx-2">Go Back</span>
       </button>
+
       {loading ? (
         <div className="flex justify-center">
           <Spinner />
@@ -109,7 +110,10 @@ export default function GameDetails({ currentGame, goBack }) {
                 </div>
               </div>
               <div className="flex justify-center items-center">
-                <button className="main-button">Purchase</button>
+                <button className="main-button flex items-center ">
+                  <span className="ml-4 mr-2">Purchase</span>
+                  <img src="./shopping-cart.svg" className="size-6 mr-4" />
+                </button>
               </div>
             </div>
           </div>
