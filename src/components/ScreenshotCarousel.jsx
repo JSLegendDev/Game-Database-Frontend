@@ -53,6 +53,10 @@ export default function ScreenshotCarousel({ screenshots }) {
         src={screenshots[currentScreenshotIndex].image}
         loading="lazy"
       />
+
+      <span className="bg-gray-900 rounded-full px-4 py-1 text-gray-300 text-xs absolute right-2 top-2 shadow-xl">
+        {currentScreenshotIndex + 1} / {screenshots.length}
+      </span>
     </div>
   );
 }

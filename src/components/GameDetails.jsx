@@ -110,7 +110,15 @@ export default function GameDetails({ currentGame, goBack }) {
                 </div>
               </div>
               <div className="flex justify-center items-center">
-                <button className="main-button flex items-center ">
+                <button
+                  className="main-button flex items-center"
+                  onClick={() =>
+                    window.open(
+                      `https://google.com/search?q=where+to+buy+${currentGame.name}`,
+                      "_blank"
+                    )
+                  }
+                >
                   <span className="ml-4 mr-2">Purchase</span>
                   <img src="./shopping-cart.svg" className="size-6 mr-4" />
                 </button>
