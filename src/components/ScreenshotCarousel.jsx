@@ -13,11 +13,11 @@ export default function ScreenshotCarousel({ screenshots }) {
 
   return (
     <div
-      className="bg-gray-800 rounded-lg w-full max-w-4xl h-full max-h-96 overflow-hidden relative"
+      className="bg-gray-800 rounded-lg w-full   h-full max-h-96 overflow-hidden relative"
       key={screenshots[currentScreenshotIndex].id}
     >
       <img
-        className="bg-gray-200 rounded-full p-4 absolute top-40 right-5 shadow-xl z-10"
+        className="bg-gray-200 rounded-full p-4 absolute top-40 right-5 shadow-gray-700 shadow-xl z-10"
         onClick={() => {
           setCurrentScreenshotIndex((currentScreenshotIndex) => {
             if (currentScreenshotIndex < screenshots.length - 1) {
@@ -30,7 +30,7 @@ export default function ScreenshotCarousel({ screenshots }) {
         src="./arrow-right.svg"
       />
       <img
-        className="bg-gray-200 rounded-full p-4 absolute top-40 left-5 shadow-xl z-10"
+        className="bg-gray-200 rounded-full p-4 absolute top-40 left-5 shadow-gray-700 shadow-xl z-10"
         onClick={() => {
           setCurrentScreenshotIndex((currentScreenshotIndex) => {
             if (currentScreenshotIndex > 0) {
@@ -54,7 +54,7 @@ export default function ScreenshotCarousel({ screenshots }) {
         loading="lazy"
       />
 
-      <span className="bg-gray-900 rounded-full px-4 py-1 text-gray-300 text-xs absolute right-2 top-2 shadow-xl">
+      <span className="bg-gray-900 rounded-full px-4 py-1 text-gray-300 text-xs absolute right-2 top-2 shadow-gray-700 shadow-xl">
         {currentScreenshotIndex + 1} / {screenshots.length}
       </span>
     </div>

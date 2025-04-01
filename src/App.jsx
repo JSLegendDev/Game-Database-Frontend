@@ -34,46 +34,57 @@ function App() {
         <h1 className="text-gradient text-4xl font-bold">Game Database</h1>
         <img src="./logo.png" className="w-25 h-25" />
       </div>
-      <Search
-        query={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}
-      />
-      {!loading && !showGameDetails ? (
-        <div className="w-full max-w-4xl grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {data ? (
-            data.results.map(
-              (game) =>
-                game.added > 30 && (
-                  <GameCard
-                    key={game.slug}
-                    name={game.name}
-                    coverLink={game.background_image}
-                    playtime={game.playtime}
-                    genres={game.genres}
-                    onClick={() => {
-                      setCurrentGame(game);
-                      setShowGameDetails(true);
-                    }}
-                  />
-                )
-            )
+      <div className="w-full max-w-4xl">
+        <Search
+          query={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
+        <div className="w-full">
+          {!loading && !showGameDetails ? (
+            <>
+              {data && (
+                <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                  {data.results.map(
+                    (game) =>
+                      game.added > 30 && (
+                        <GameCard
+                          key={game.slug}
+                          name={game.name}
+                          coverLink={game.background_image}
+                          playtime={game.playtime}
+                          genres={game.genres}
+                          onClick={() => {
+                            setCurrentGame(game);
+                            setShowGameDetails(true);
+                          }}
+                        />
+                      )
+                  )}
+                </div>
+              )}
+
+              {data && data.results.length === 0 && (
+                <div className="w-full  flex flex-col justify-center items-center">
+                  <img src="./no-results-found.png" className="size-52" />
+                  <p className="text-gray-300 text-2xl">No games found!</p>
+                </div>
+              )}
+            </>
+          ) : showGameDetails ? (
+            <GameDetails
+              currentGame={currentGame}
+              goBack={() => {
+                setShowGameDetails(false);
+                setCurrentGame(null);
+              }}
+            />
           ) : (
-            <p className="text-white">Search a game!</p>
+            <div className="flex justify-center">
+              <Spinner />
+            </div>
           )}
         </div>
-      ) : showGameDetails ? (
-        <div className="w-full max-w-4xl">
-          <GameDetails
-            currentGame={currentGame}
-            goBack={() => {
-              setShowGameDetails(false);
-              setCurrentGame(null);
-            }}
-          />
-        </div>
-      ) : (
-        <Spinner />
-      )}
+      </div>
     </main>
   );
 }

@@ -33,7 +33,6 @@ export default function GameDetails({ currentGame, goBack }) {
 
   useEffect(() => {
     (async () => {
-      console.log("call API to get more details");
       await fetchData();
     })();
   }, []);
@@ -49,13 +48,13 @@ export default function GameDetails({ currentGame, goBack }) {
   }, [data]);
 
   return (
-    <div>
+    <section>
       <button className="main-button flex" onClick={goBack}>
         <img src="./back-arrow.svg" /> <span className="mx-2">Go Back</span>
       </button>
 
       {loading ? (
-        <div className="flex justify-center">
+        <div className="flex justify-center mt-4">
           <Spinner />
         </div>
       ) : (
@@ -89,25 +88,22 @@ export default function GameDetails({ currentGame, goBack }) {
 
             <div className="grid grid-cols-2 py-4">
               <div className="flex flex-col">
-                <h2 className="text-gray-200 text-xl">Genres</h2>
-                <div className="flex flex-wrap gap-2 py-2">
+                <h2 className="text-gray-300 text-xl">Genres</h2>
+                <ul className="flex flex-wrap gap-2 py-2">
                   {currentGame.genres.map((genre) => (
-                    <span className="genre-pill" key={genre.name}>
+                    <li className="genre-pill" key={genre.name}>
                       {genre.name}
-                    </span>
+                    </li>
                   ))}
-                </div>
-                <h2 className="text-gray-200 text-xl">Platforms</h2>
-                <div className="flex flex-wrap gap-2 py-2">
+                </ul>
+                <h2 className="text-gray-300 text-xl">Platforms</h2>
+                <ul className="flex flex-wrap gap-2 py-2">
                   {currentGame.platforms.map((platform) => (
-                    <span
-                      key={platform.platform.name}
-                      className="platform-pill"
-                    >
+                    <li key={platform.platform.name} className="platform-pill">
                       {platform.platform.name}
-                    </span>
+                    </li>
                   ))}
-                </div>
+                </ul>
               </div>
               <div className="flex justify-center items-center">
                 <button
@@ -127,6 +123,6 @@ export default function GameDetails({ currentGame, goBack }) {
           </div>
         </div>
       )}
-    </div>
+    </section>
   );
 }
