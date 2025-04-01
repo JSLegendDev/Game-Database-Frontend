@@ -9,7 +9,6 @@ export default function useFetch(fetchFunction) {
     try {
       setLoading(true);
       const result = await fetchFunction();
-      console.log(result);
       setData(result);
     } catch (error) {
       setError(error);

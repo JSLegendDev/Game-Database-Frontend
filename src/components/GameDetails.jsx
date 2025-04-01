@@ -60,7 +60,7 @@ export default function GameDetails({ currentGame, goBack }) {
       ) : (
         <div className="mt-4">
           <div className="w-full relative">
-            <div class="absolute inset-0 bg-gradient-to-b from-black via-transparent to-transparent opacity-80"></div>
+            <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-transparent opacity-80"></div>
             <h1 className="text-gray-200 text-2xl absolute top-5 left-5">
               {currentGame.name}
             </h1>
@@ -72,8 +72,10 @@ export default function GameDetails({ currentGame, goBack }) {
           <div className="">
             {data && (
               <div className="text-gray-300">
-                {description.map((paragraph) => (
-                  <p className="mt-2">{paragraph}</p>
+                {description.map((paragraph, index) => (
+                  <p className="mt-2" key={index}>
+                    {paragraph}
+                  </p>
                 ))}
               </div>
             )}

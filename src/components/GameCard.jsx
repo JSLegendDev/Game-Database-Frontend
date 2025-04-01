@@ -28,7 +28,9 @@ export default function GameCard({
 
       <li className="flex flex-row flex-wrap gap-2 m-2 mt-auto">
         {genres.map((genre) => (
-          <ul className="genre-pill">{genre.name}</ul>
+          <ul className="genre-pill" key={genre.name}>
+            {genre.name}
+          </ul>
         ))}
       </li>
     </div>
