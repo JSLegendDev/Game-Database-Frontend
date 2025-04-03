@@ -1,12 +1,15 @@
-# React + Vite
+# Game Database (Frontend)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a frontend made in React allowing users to search for games and learn more about given titles.
 
-Currently, two official plugins are available:
+![screenshot of the frontend](https://substackcdn.com/image/fetch/w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe01d7bb7-8457-4bd2-ab26-d737bd9f62e5_2940x1522.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+![other screenshot](https://substackcdn.com/image/fetch/w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F132b4a28-16e7-4dab-9167-d7761e4d32a5_2928x1516.png)
 
-## Expanding the ESLint configuration
+![other screenshot](https://substackcdn.com/image/fetch/w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb559118d-1f38-4494-9b88-27d966fb4250_2928x1516.png)
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+# How to Run Locally
+
+- You need to first run the backend available at (TBD)
+- Run `npm install`
+- Run `npm run dev`
