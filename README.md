@@ -16,6 +16,6 @@ This is a frontend made in React allowing users to search for games and learn mo
 VITE_API_ENDPOINT="http://localhost:3000/api"
 ```
 
-- Clone and run the backend locally. You can find the repo here.
+- Clone and run the backend locally. You can find the repo [here](https://github.com/JSLegendDev/Game-Database-Backend).
 - Run `npm install`
 - Run `npm run dev`
