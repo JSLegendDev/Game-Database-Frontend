@@ -10,6 +10,8 @@ This is a frontend made in React allowing users to search for games and learn mo
 
 # How to Run Locally
 
+- Create a .env file
+
 - You need to first run the backend available at (TBD)
 - Run `npm install`
 - Run `npm run dev`
