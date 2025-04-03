@@ -10,8 +10,12 @@ This is a frontend made in React allowing users to search for games and learn mo
 
 # How to Run Locally
 
-- Create a .env file
+- Create a .env file containing the address of the backend.
 
-- You need to first run the backend available at (TBD)
+```
+VITE_API_ENDPOINT="http://localhost:3000/api"
+```
+
+- Clone and run the backend locally. You can find the repo here.
 - Run `npm install`
 - Run `npm run dev`
