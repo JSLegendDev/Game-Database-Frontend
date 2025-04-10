@@ -21,7 +21,6 @@ function App() {
         setShowGameDetails(false);
         setCurrentGame(null);
         await fetchData();
-        return;
       }
     }, 500);
 
@@ -30,7 +29,7 @@ function App() {
 
   return (
     <main className="w-full p-2 flex flex-col items-center">
-      <div className="flex items-center gap-1">
+      <div className="flex items-center">
         <h1 className="text-gradient text-4xl font-bold">Game Database</h1>
         <img src="./logo.png" className="w-25 h-25" />
       </div>

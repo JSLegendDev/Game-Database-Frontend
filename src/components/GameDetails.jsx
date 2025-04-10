@@ -41,7 +41,6 @@ export default function GameDetails({ currentGame, goBack }) {
     if (data) {
       const rawDescription = data.description_raw;
       const paragraphs = createParagraphs(rawDescription);
-      // const paragraphs = rawDescription.split("\n\n");
 
       setDescription(paragraphs);
     }
